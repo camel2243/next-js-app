@@ -58,7 +58,7 @@ export default function Home() {
             </span>
           </h2>
           <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            The cookies function allows you to read the HTTP incoming request cookies from a server component.
+            You can use the built-in req (request) and res (response) objects to read and set cookies on the server-side.
           </p>
         </a>
 
@@ -117,3 +117,10 @@ export default function Home() {
   )
 }
 
+export async function getServerSideProps(context) {
+  context.res.setHeader("set-cookie", `nextjs_demo=cookie_demo; path=/; samesite=lax; httponly;`)
+
+  return {
+    props: {},
+  };
+}
